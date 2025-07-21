@@ -1,0 +1,16 @@
+services:
+  - name: n8n
+    type: web
+    env: docker
+    plan: starter
+    # Autres paramètres si besoin
+
+  - name: ollama
+    type: private          # ← essentiel pour le réseau privé
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter          # ou gpu-starter selon les modèles
+    region: frankfurt
+    ports:
+      - port: 11434
+        protocol: tcp
